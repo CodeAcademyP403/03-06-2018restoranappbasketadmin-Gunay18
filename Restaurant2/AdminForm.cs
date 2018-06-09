@@ -15,7 +15,6 @@ namespace Restaurant2
         public AdminForm()
         {
             InitializeComponent();
-          
         }
 
         private Form _Form;
