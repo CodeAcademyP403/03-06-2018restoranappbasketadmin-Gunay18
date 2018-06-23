@@ -45,12 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
-    <Compile Include="AdminForm.cs">
+    <Compile Include="ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="ManagerForm.Designer.cs">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs" />
+    <Compile Include="OfficiantForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficiantForm.Designer.cs">
+      <DependentUpon>OfficiantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Basket.cs" />
     <Compile Include="LoginForm.cs">
@@ -69,8 +75,19 @@
     <Compile Include="ProductCategory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="RegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrationForm.Designer.cs">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs" />
+    <Compile Include="Staff.cs" />
+    <EmbeddedResource Include="ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficiantForm.resx">
+      <DependentUpon>OfficiantForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -87,6 +104,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

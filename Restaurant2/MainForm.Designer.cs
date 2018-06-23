@@ -31,6 +31,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnComplete = new System.Windows.Forms.Button();
             this.btn_order = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtbx_count = new System.Windows.Forms.TextBox();
@@ -50,6 +51,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnComplete);
             this.groupBox1.Controls.Add(this.btn_order);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtbx_count);
@@ -59,21 +61,32 @@
             this.groupBox1.Controls.Add(this.cmbx_name);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmbx_category);
-            this.groupBox1.Location = new System.Drawing.Point(40, 34);
+            this.groupBox1.Location = new System.Drawing.Point(34, 34);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(528, 411);
+            this.groupBox1.Size = new System.Drawing.Size(573, 411);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order";
             // 
+            // btnComplete
+            // 
+            this.btnComplete.Location = new System.Drawing.Point(317, 349);
+            this.btnComplete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnComplete.Name = "btnComplete";
+            this.btnComplete.Size = new System.Drawing.Size(138, 28);
+            this.btnComplete.TabIndex = 9;
+            this.btnComplete.Text = "Complete";
+            this.btnComplete.UseVisualStyleBackColor = true;
+            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
+            // 
             // btn_order
             // 
-            this.btn_order.Location = new System.Drawing.Point(181, 350);
+            this.btn_order.Location = new System.Drawing.Point(118, 349);
             this.btn_order.Margin = new System.Windows.Forms.Padding(4);
             this.btn_order.Name = "btn_order";
-            this.btn_order.Size = new System.Drawing.Size(159, 28);
+            this.btn_order.Size = new System.Drawing.Size(138, 28);
             this.btn_order.TabIndex = 8;
             this.btn_order.Text = "Order";
             this.btn_order.UseVisualStyleBackColor = true;
@@ -94,7 +107,7 @@
             this.txtbx_count.Location = new System.Drawing.Point(119, 289);
             this.txtbx_count.Margin = new System.Windows.Forms.Padding(4);
             this.txtbx_count.Name = "txtbx_count";
-            this.txtbx_count.Size = new System.Drawing.Size(280, 22);
+            this.txtbx_count.Size = new System.Drawing.Size(336, 22);
             this.txtbx_count.TabIndex = 6;
             this.txtbx_count.Text = "1";
             // 
@@ -114,7 +127,7 @@
             this.txtbx_price.Margin = new System.Windows.Forms.Padding(4);
             this.txtbx_price.Name = "txtbx_price";
             this.txtbx_price.ReadOnly = true;
-            this.txtbx_price.Size = new System.Drawing.Size(280, 22);
+            this.txtbx_price.Size = new System.Drawing.Size(336, 22);
             this.txtbx_price.TabIndex = 4;
             // 
             // label2
@@ -134,7 +147,7 @@
             this.cmbx_name.Location = new System.Drawing.Point(119, 154);
             this.cmbx_name.Margin = new System.Windows.Forms.Padding(4);
             this.cmbx_name.Name = "cmbx_name";
-            this.cmbx_name.Size = new System.Drawing.Size(280, 24);
+            this.cmbx_name.Size = new System.Drawing.Size(336, 24);
             this.cmbx_name.TabIndex = 2;
             this.cmbx_name.SelectedValueChanged += new System.EventHandler(this.cmbx_name_SelectedValueChanged);
             // 
@@ -155,7 +168,7 @@
             this.cmbx_category.Location = new System.Drawing.Point(119, 75);
             this.cmbx_category.Margin = new System.Windows.Forms.Padding(4);
             this.cmbx_category.Name = "cmbx_category";
-            this.cmbx_category.Size = new System.Drawing.Size(280, 24);
+            this.cmbx_category.Size = new System.Drawing.Size(336, 24);
             this.cmbx_category.TabIndex = 0;
             this.cmbx_category.SelectedValueChanged += new System.EventHandler(this.cmbx_category_SelectedValueChanged);
             // 
@@ -237,5 +250,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.Button btn_logadmin;
+        private System.Windows.Forms.Button btnComplete;
     }
 }

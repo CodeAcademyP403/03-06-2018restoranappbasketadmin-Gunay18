@@ -20,10 +20,12 @@ namespace Restaurant2
 
     public class Basket
     {
-        public List<ProductItem> productItems { get; set; }
+        public List<ProductItem> ProductItems { get; set; }
+        public Person Officiant { get; set; }
         public Basket()
         {
-            productItems = new List<ProductItem>();
+            ProductItems = new List<ProductItem>();
+            Officiant = new Person();
         }
        
     }

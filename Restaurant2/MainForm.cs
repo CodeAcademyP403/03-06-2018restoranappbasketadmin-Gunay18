@@ -19,8 +19,8 @@ namespace Restaurant2
 
         public MainForm()
         {
-         //   AdminForm adminForm = new AdminForm(this);
             InitializeComponent();
+           // groupBox1.Hide();
             products.AddRange(new Product[]
             {
                 new Product()
@@ -75,17 +75,67 @@ namespace Restaurant2
                 },
             });
             loadCategory();
+            AddStaff();
 
         }
-
 
         public void loadCategory()
         {
             cmbx_category.DataSource = Enum.GetValues(typeof(ProductCategory));
-            //cmbx_category.DataSource = products;
-            //cmbx_category.DisplayMember= "ProductCategory";
-            
+           
         }
+        public Staff Staff = new Staff();
+
+        public void AddStaff()
+        {
+            Staff.StaffList.AddRange(new Person[]
+            {
+                new Person
+            {
+                Name="Aydin",
+                Email="aydin@gmail.com",
+                Password="123",
+                Role=Role.Officant
+            },
+                new Person
+            {
+                Name = "Gunel",
+                Email = "gunel@gmail.com",
+                Password = "123",
+                Role = Role.Officant
+            },
+                new Person
+            {
+                Name = "Aydan",
+                Email = "aydan@gmail.com",
+                Password = "123",
+                Role = Role.Officant
+            },
+                new Person
+            {
+                Name = "Aysel",
+                Email = "aysel@gmail.com",
+                Password = "123",
+                Role = Role.Officant
+            },
+                new Person
+            {
+                Name = "Nadir",
+                Email = "nadir@gmail.com",
+                Password = "123",
+                Role = Role.Manager
+            },
+                new Person
+            {
+                Name = "Sadiq",
+                Email = "sadiq@gmail.com",
+                Password = "123",
+                Role = Role.Admin
+            }
+        });
+
+        }
+
         public Basket basket = new Basket();
         private decimal totalPrice = 0;
         private void btn_order_Click(object sender, EventArgs e)
@@ -101,36 +151,84 @@ namespace Restaurant2
                     productItem.ID = item.productID;
                 }
             }
-            basket.productItems.Add(productItem);
+            basket.ProductItems.Add(productItem);
            
             dataGrid.DataSource = null;
-            dataGrid.DataSource = basket.productItems;
+            dataGrid.DataSource = basket.ProductItems;
             totalPrice += productItem.TotalPrice;
             lbl_price.Text = totalPrice.ToString();
         }
 
+        public List<ProductItem> Copy()
+        {
+         List<ProductItem> CopyOfOrders = new List<ProductItem>();
+
+            foreach (ProductItem item in basket.ProductItems)
+            {
+                ProductItem productItem = new ProductItem()
+                {
+                    Count = item.Count,
+                    ID = item.ID,
+                    Name = item.Name,
+                    TotalPrice = item.TotalPrice
+                };
+                CopyOfOrders.Add(productItem);
+            }
+            return CopyOfOrders;
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            foreach (Person person in Staff.StaffList)
+            {
+                if (person.Role == Role.Officant && person.Orders == null)
+                {
+                    basket.Officiant = person;
+                    //person.Orders = basket.ProductItems;
+                    person.Orders = Copy();
+                    break;
+                }
+            }
+            //Orders.Add(basket.ProductItems);
+            cmbx_category.SelectedIndex = 0;
+            cmbx_name.SelectedIndex = 0;
+            txtbx_count.Text = "1";
+            txtbx_price.Text = "";
+            dataGrid.DataSource = null;
+            basket.ProductItems.RemoveAll(i => true);
+        }
+
+       
+        // PROBLEM: MODIFING ARRAY AND REMOVEALL METHODS CHANGES PREVIOUS REFERENCES TO THAT ARRAY , 
+        // INCLUDING THE ARRAY: PERSON.ORDERS
+
         private void cmbx_category_SelectedValueChanged(object sender, EventArgs e)
         {
-            ProductCategory selectedCategory = (ProductCategory)(cmbx_category).SelectedItem;
-            cmbx_name.Items.Clear();
-            foreach (Product item in products)
+            if ((cmbx_category).SelectedItem != null)
             {
-                if (selectedCategory == item.productCategory)
+                ProductCategory selectedCategory = (ProductCategory)(cmbx_category).SelectedItem;
+                cmbx_name.Items.Clear();
+                foreach (Product item in products)
                 {
-                    cmbx_name.Items.Add(item.Name);
+                    if (selectedCategory == item.productCategory)
+                    {
+                        cmbx_name.Items.Add(item.Name);
+                    }
                 }
-
             }
         }
 
         private void cmbx_name_SelectedValueChanged(object sender, EventArgs e)
         {
-       
-            foreach (Product item in products)
+
+            if (cmbx_name.SelectedItem != null)
             {
-                if (item.Name == cmbx_name.SelectedItem.ToString())
+                foreach (Product item in products)
                 {
-                    txtbx_price.Text = item.Price.ToString();
+                    if (item.Name == cmbx_name.SelectedItem.ToString())
+                    {
+                        txtbx_price.Text = item.Price.ToString();
+                    }
                 }
             }
            
@@ -139,10 +237,13 @@ namespace Restaurant2
         private void btn_logadmin_Click(object sender, EventArgs e)
         {
             //sending MainForm into LoginForm, so that when LoginForm closes, it closes MainForm too
-            LoginForm loginForm = new LoginForm(this, basket.productItems);
+            LoginForm loginForm = new LoginForm(this, basket.ProductItems, Staff);
             this.Hide();
             loginForm.Show();
             
         }
+
+        //public List<List<ProductItem>> Orders = new List<List<ProductItem>>();
+
     }
 }

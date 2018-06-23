@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Restaurant2
 {
-    public partial class AdminForm : Form
+    public partial class OfficiantForm : Form
     {
-        public AdminForm()
+        public OfficiantForm()
         {
             InitializeComponent();
         }
 
         private Form _Form;
         private List<ProductItem> _ProductItemList=new List<ProductItem>();
-        public AdminForm(Form form, List<ProductItem> productItemList):this()
+        public OfficiantForm(Form form, List<ProductItem> productItemList):this()
         {
             _Form = form;
             _ProductItemList = productItemList;
@@ -34,5 +34,7 @@ namespace Restaurant2
         {
             _Form.Close();
         }
+
+       
     }
 }

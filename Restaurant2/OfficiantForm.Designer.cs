@@ -1,6 +1,6 @@
 ﻿namespace Restaurant2
 {
-    partial class AdminForm
+    partial class OfficiantForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,15 +51,15 @@
             this.lbl_orders.TabIndex = 2;
             this.lbl_orders.Text = "Orders";
             // 
-            // AdminForm
+            // OfficiantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lbl_orders);
             this.Controls.Add(this.dataGridOrders);
-            this.Name = "AdminForm";
-            this.Text = "AdminForm";
+            this.Name = "OfficiantForm";
+            this.Text = "OfficiantForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrders)).EndInit();
             this.ResumeLayout(false);
